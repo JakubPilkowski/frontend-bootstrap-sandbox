@@ -2,8 +2,6 @@
 
 ![](./_resources/img/header.png)
 
-## Co w środku?
-
 Bootstrap projektu opartego o następujące narzędzia:
 
 - [editorconfig](https://editorconfig.org/)
