@@ -1,4 +1,4 @@
-# Opanuj Frontend: AI Edition - Frontend Bootstrap
+# Opanuj Frontend: AI Edition
 
 ![](./_resources/img/header.png)
 
