@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly APP_VERSION: string;
+  readonly VITE_TEST: string;
 }
 
 interface ImportMeta {
@@ -9,3 +10,4 @@ interface ImportMeta {
 }
 
 declare const __APP_VERSION__: string;
+declare const __TEAM__: string;
