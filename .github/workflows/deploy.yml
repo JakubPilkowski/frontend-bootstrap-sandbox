@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +23,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: List files
+        run: find . -depth 2 | grep -v node_modules | grep -v .git
+
       - name: Deploy to netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
@@ -30,9 +33,6 @@ jobs:
           production-branch: master
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'Deploy from GitHub Actions'
-        #   enable-pull-request-comment: false
-        #   enable-commit-comment: true
-        #   overwrites-pull-request-comment: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_GITHUB_ACTIONS_TEST }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_GITHUB_ACTIONS_TEST_SITE_ID }}
