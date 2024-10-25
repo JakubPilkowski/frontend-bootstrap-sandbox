@@ -3,6 +3,12 @@ name: Deploy
 on:
   push:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      deploy-netlify:
+        type: boolean
+        default: true
+        description: Enable netlify deployment
 
 jobs:
   build:
@@ -25,6 +31,7 @@ jobs:
 
       - name: Deploy to netlify
         uses: nwtgck/actions-netlify@v3.0
+        if: ${{ inputs.deploy-netlify }}
         with:
           publish-dir: './dist'
           production-branch: master
