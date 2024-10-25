@@ -35,5 +35,5 @@ jobs:
         #   overwrites-pull-request-comment: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_GITHUB_ACTIONS_TEST }}
-          NETLIFY_SITE_ID: '$27be5503-a222-49fc-a836-d510a1363660'
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_GITHUB_ACTIONS_TEST_SITE_ID }}
         timeout-minutes: 1
