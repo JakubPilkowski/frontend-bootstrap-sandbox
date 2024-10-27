@@ -20,13 +20,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-
-      - name: Install dependencies
-        run: npm ci
+      - name: Configure node
+        uses: ./.github/actions/configure-node
 
       - name: Lint code
         run: npm run lint
@@ -45,14 +40,8 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: 'Deploy from GitHub Actions'
 
-      - name: Install Vercel CLI
-        run: npm install --global vercel@canary
-
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy to vercel
+        uses: ./.github/actions/deploy-vercel
+        with:
+          mode: 'production'
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
