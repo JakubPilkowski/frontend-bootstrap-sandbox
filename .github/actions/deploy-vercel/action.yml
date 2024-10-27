@@ -37,6 +37,7 @@ runs:
 
     - name: Comment with preview URL from vercel
       uses: actions/github-script@v7
+      if: ${{ inputs.mode == 'preview' }}
       with:
         script: |
           const { DEPLOY_URL } = process.env;
