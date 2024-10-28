@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import AppVersion from './components/AppVersion';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           xyz
         </h1>
       </div>
+      <AppVersion />
       <Outlet />
     </div>
   );

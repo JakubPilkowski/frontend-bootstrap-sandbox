@@ -6,10 +6,13 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "VITE_TEST=test VITE_XYZ_INLINE=inline vite",
+    "dev": "VITE_TEST=test VITE_XYZ_INLINE=inline VITE_ENVIRONMENT=local vite",
     "lint": "eslint src",
     "test": "vitest src",
-    "test:e2e": "npx playwright install && playwright test"
+    "test:e2e": "npx playwright install && playwright test",
+    "release:patch": "npm version patch && git push --follow-tags",
+    "release:minor": "npm version minor && git push --follow-tags",
+    "release:major": "npm version major && git push --follow-tags"
   },
   "author": "Przeprogramowani",
   "license": "ISC",
