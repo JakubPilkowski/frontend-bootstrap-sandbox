@@ -10,9 +10,9 @@
     "lint": "eslint src",
     "test": "vitest src",
     "test:e2e": "npx playwright install && playwright test",
-    "release:patch": "npm version patch && node scripts/push-release.js patch",
-    "release:minor": "npm version minor && node scripts/push-release.js minor",
-    "release:major": "npm version major && node scripts/push-release.js major"
+    "release:patch": "npm version patch && node push-release.js patch",
+    "release:minor": "npm version minor && node push-release.js minor",
+    "release:major": "npm version major && node push-release.js major"
   },
   "author": "Przeprogramowani",
   "license": "ISC",
