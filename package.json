@@ -1,15 +1,18 @@
 {
   "name": "frontend-bootstrap",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Opinionated frontend bootstrap",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "VITE_TEST=test VITE_XYZ_INLINE=inline vite",
+    "dev": "VITE_TEST=test VITE_XYZ_INLINE=inline VITE_ENVIRONMENT=local vite",
     "lint": "eslint src",
     "test": "vitest src",
-    "test:e2e": "npx playwright install && playwright test"
+    "test:e2e": "npx playwright install && playwright test",
+    "release:patch": "npm version patch && node push-release.js patch",
+    "release:minor": "npm version minor && node push-release.js minor",
+    "release:major": "npm version major && node push-release.js major"
   },
   "author": "Przeprogramowani",
   "license": "ISC",

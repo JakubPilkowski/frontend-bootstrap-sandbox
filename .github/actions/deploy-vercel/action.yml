@@ -19,6 +19,8 @@ runs:
 
     - name: PROD Vercel Deployment
       if: ${{ inputs.mode == 'production' }}
+      env:
+        VITE_ENVIRONMENT: 'Production'
       run: |
         vercel pull --yes --environment=production --token=${{ inputs.vercel-token }}
         vercel build --prod --token=${{ inputs.vercel-token }}
@@ -27,10 +29,12 @@ runs:
 
     - name: PREVIEW Vercel Deployment
       if: ${{ inputs.mode == 'preview' }}
+      env:
+        VITE_ENVIRONMENT: 'Preview'
       run: |
         vercel pull --yes --environment=preview --token=${{ inputs.vercel-token }}
-        DEPLOY_OUTPUT="$(vercel deploy --token=${{ inputs.vercel-token }})"
         vercel build --token=${{ inputs.vercel-token }}
+        DEPLOY_OUTPUT="$(vercel deploy --prebuilt --token=${{ inputs.vercel-token }})"
         DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep http | tail -n 1)
         echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
       shell: bash
