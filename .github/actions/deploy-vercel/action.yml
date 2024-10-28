@@ -20,7 +20,7 @@ runs:
     - name: PROD Vercel Deployment
       if: ${{ inputs.mode == 'production' }}
       env:
-        VITE_ENVIRONMENT: 'Production'
+        VITE_ENVIRONMENT: 'Staging'
       run: |
         vercel pull --yes --environment=production --token=${{ inputs.vercel-token }}
         vercel build --prod --token=${{ inputs.vercel-token }}
