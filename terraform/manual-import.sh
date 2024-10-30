@@ -1,0 +1,4 @@
+#!/bin/bash
+
+terraform import aws_s3_bucket.ofe_kalabangacatalog_bucket ofe-kalabangacatalog
+terraform import aws_cloudfront_distribution.ofe_kalabangacatalog_distribution E1860WGIUDT7Y5
