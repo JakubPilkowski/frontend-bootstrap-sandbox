@@ -1,0 +1,30 @@
+name: Healthcheck
+
+on:
+  workflow_dispatch:
+
+jobs:
+  healthcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure node
+        uses: ./.github/actions/configure-node
+
+      - name: Run healthcheck
+        uses: ./.github/actions/healthcheck
+        if: ${{job.status == 'success'}}
+        with:
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_TEST_CHANNEL }}
+          message: 'Job completed successfully'
+          type: 'good'
+
+      - name: Run healthcheck
+        uses: ./.github/actions/healthcheck
+        if: ${{job.status == 'failure'}}
+        with:
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_TEST_CHANNEL }}
+          message: 'Job failed'
+          type: 'danger'
