@@ -1,0 +1,31 @@
+name: Deploy aws
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-aws:
+    runs-on: ubuntu-latest
+    environment:
+      name: 'Production'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure node
+        uses: ./.github/actions/configure-node
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
+        env:
+          VITE_ENVIRONMENT: 'Development'
+
+      - name: Deploy to aws
+        run: aws s3 sync ./dist s3://ofe-kalabangacatalog
