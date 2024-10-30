@@ -7,6 +7,14 @@ terraform {
   }
 
   required_version = ">= 1.5.0"
+  # backend "s3" {
+  #   bucket         = "ofe-kalabanga-terraform-state-bucket"
+  #   key            = "state/terraform.tfstate"
+  #   region         = "eu-north-1"
+  #   encrypt        = true
+  #   dynamodb_table = "terraform-state-lock"
+  # }
+
 }
 
 provider "aws" {
