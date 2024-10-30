@@ -11,7 +11,6 @@ const App = () => {
           {/* {import.meta.env.VITE_TEST} {__TEAM__}{' '}
           {import.meta.env.VITE_XYZ_TEST_ENV}
           {import.meta.env.VITE_XYZ_INLINE} */}
-          xyz
         </h1>
       </div>
       <AppVersion />
