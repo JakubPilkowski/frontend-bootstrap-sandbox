@@ -26,6 +26,13 @@ const CharacterDetails = () => {
           </div>
         </div>
       </div>
+      <button
+        onClick={() => {
+          throw new Error('SampleError');
+        }}
+      >
+        Throw error
+      </button>
       <Link
         to={`/`}
         className="bg-blue-500 rounded-md px-4 py-2 text-white hover:bg-blue-400"
