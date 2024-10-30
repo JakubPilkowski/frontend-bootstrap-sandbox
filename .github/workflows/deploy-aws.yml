@@ -25,7 +25,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          VITE_ENVIRONMENT: 'Development'
+          VITE_ENVIRONMENT: 'Production'
 
       - name: 'Configure AWS Credentials'
         uses: aws-actions/configure-aws-credentials@v4.0.2
