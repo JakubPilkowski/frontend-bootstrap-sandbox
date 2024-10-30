@@ -1,4 +1,4 @@
-import { axios } from 'axios';
+import axios from 'axios';
 
 const { SLACK_WEBHOOK_URL, NOTIFY_MESSAGE, NOTIFY_TYPE } = process.env;
 
