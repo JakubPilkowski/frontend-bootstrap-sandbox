@@ -25,7 +25,7 @@ export default defineConfig({
         quality: 50,
       },
     }),
-    process.env.VITE_ENV_NAME === 'production' &&
+    process.env.VITE_ENVIRONMENT === 'Production' &&
       sentryVitePlugin({
         org: 'kalabanga',
         project: 'rm-kalabanga-catalog',
