@@ -14,7 +14,7 @@ const Characters = () => {
       'https://rickandmortyapi.com/api/character',
     )[0];
 
-    fetch(`${import.meta.env.VITE_AWS_MONITORING_API}/prod/monitoring`, {
+    fetch(`${import.meta.env.VITE_AWS_MONITORING_API}`, {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify({ loadTimeMs: fetchData.responseEnd }),
