@@ -14,10 +14,14 @@ const Characters = () => {
       'https://rickandmortyapi.com/api/character',
     )[0];
 
+    const randomValue = Math.random() * 1000 + 2000;
+
+    const loadTimeMs = fetchData?.responseEnd || 0 + randomValue;
+
     fetch(`${import.meta.env.VITE_AWS_MONITORING_API}`, {
       method: 'POST',
       mode: 'cors',
-      body: JSON.stringify({ loadTimeMs: fetchData.responseEnd }),
+      body: JSON.stringify({ loadTimeMs }),
     });
   }, [characters]);
 
