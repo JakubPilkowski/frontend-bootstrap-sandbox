@@ -6,6 +6,8 @@ import { fetchCharacter, fetchCharacters } from './loaders/CharacterLoader';
 import { CharacterRouteParams } from './types/types';
 import { ConfigProvider } from './context/ConfigContext';
 
+import { initSentry } from './sentry';
+
 const Characters = lazy(() => import('./pages/Characters'));
 const CharacterDetails = lazy(() => import('./pages/CharacterDetails'));
 
@@ -29,6 +31,8 @@ const router = createHashRouter([
     ],
   },
 ]);
+
+initSentry();
 
 ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
   <React.StrictMode>
