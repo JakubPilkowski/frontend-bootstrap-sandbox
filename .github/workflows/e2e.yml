@@ -17,6 +17,7 @@ jobs:
         run: npm run test:e2e > gpt_error.log
         env:
           VITE_ENVIRONMENT: 'Preview'
+          E2E_BASE_URL: https://rickandmortycatalog.netlify.app
 
       - uses: przeprogramowani/gpt-debugger@main
         if: ${{ failure() }}
