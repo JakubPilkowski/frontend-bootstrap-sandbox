@@ -9,7 +9,6 @@
     "dev": "VITE_TEST=test VITE_XYZ_INLINE=inline VITE_ENVIRONMENT=local vite",
     "lint": "eslint src",
     "test": "vitest src",
-    "test:e2e": "npx playwright install && playwright test",
     "release:patch": "npm version patch && node push-release.js patch",
     "release:minor": "npm version minor && node push-release.js minor",
     "release:major": "npm version major && node push-release.js major"

@@ -1,0 +1,24 @@
+name: e2e tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure node
+        uses: ./.github/actions/configure-node
+
+      - name: Run e2e tests
+        run: npm run test:e2e > gpt_error.log
+        env:
+          VITE_ENVIRONMENT: 'Preview'
+
+      - uses: przeprogramowani/gpt-debugger@main
+        if: ${{ failure() }}
+        with:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

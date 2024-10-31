@@ -21,3 +21,5 @@ nvm use
 npm install
 npm run dev
 ```
+
+    "test:e2e": "npx playwright install && playwright test",
