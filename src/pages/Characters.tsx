@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Character } from '../../lib/rick-and-morty-api-client';
+import { useFlag, useStatus } from '@featurevisor/react';
 
 const Characters = () => {
   const { characters } = useLoaderData() as { characters: Character[] };
+
+  const { isReady } = useStatus();
+  console.log('isReady', isReady);
+  const isEnabled = useFlag('pagination', {
+    country: new URLSearchParams(window.location.search).get('country') || 'us',
+  });
 
   useEffect(() => {
     if (import.meta.env.DEV) {
@@ -44,6 +51,7 @@ const Characters = () => {
           </li>
         ))}
       </ul>
+      {isEnabled && <div>Pagination</div>}
     </div>
   );
 };
